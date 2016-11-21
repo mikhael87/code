@@ -1,2 +1,1 @@
-# code
-Codigos de uso tradicional
+Scripts PHP de utilidad para multiples propositos
