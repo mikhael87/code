@@ -1,0 +1,2 @@
+$whitelist = [ 'id', 'name' ];
+$output = array_intersect_key( $data, array_flip( $whitelist ) );
