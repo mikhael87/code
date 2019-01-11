@@ -4,3 +4,27 @@ for ($i=0 ; $i<=100 ; $i++) {
     echo str_pad($i, 3, ' ', STR_PAD_LEFT) . " %";    // Output is always 5 characters long
     sleep(3);           // wait for a while, so we see the animation
 }
+
+
+//UNO MAS ELABORADO
+$colors = ['good' => '\e[0;32;40m', 'warning' => '\e[1;33;40m', 'danger' => '\e[0;31;40m'];
+echo "Redis total connections received:         ";  // 5 characters of padding at the end
+while (1) {
+    $output = shell_exec('redis-cli -h localhost -p 6379 -a 'password' info | grep total_connections_received');
+    $int = (int) filter_var($output, FILTER_SANITIZE_NUMBER_INT);
+    echo "\033[8D";      // Move 5 characters backward
+    $color = '';
+    switch ($int) {
+        case ($int < 80000000):
+            $color = $colors['good'];
+            break;
+        case ($int >= 80000000 && $ing < 150000000):
+            $color = $colors['warning'];
+            break;
+        case ($int >= 150000000):
+            $color = $colors['danger'];
+            break;
+    }
+    echo str_pad("\e[0;32;40m".$int, 8, ' ', STR_PAD_LEFT)."\e[0m";    // Output is always 5 characters long
+    sleep(3);           // wait for a while, so we see the animation
+}
