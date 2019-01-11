@@ -1,0 +1,6 @@
+echo "Progress :      ";  // 5 characters of padding at the end
+for ($i=0 ; $i<=100 ; $i++) {
+    echo "\033[5D";      // Move 5 characters backward
+    echo str_pad($i, 3, ' ', STR_PAD_LEFT) . " %";    // Output is always 5 characters long
+    sleep(3);           // wait for a while, so we see the animation
+}
